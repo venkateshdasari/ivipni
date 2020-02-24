@@ -1,0 +1,7 @@
+{
+  "name": "ivipni",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

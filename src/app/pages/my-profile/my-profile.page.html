@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav color="primary">
+      <ion-title>My Profile</ion-title>
+  </ion-nav>    
+  </ion-toolbar>
+</ion-header>
+<ion-content class="my-profile">
+  <p class="item-color">Personal Details</p>
+  <ion-list>
+      <ion-item *ngFor="let user of userDetails">
+          <ion-row>
+              <ion-col width-40>First Name</ion-col>
+              <ion-col width-60>
+                  <p>{{user.firstname}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Last Name</ion-col>
+              <ion-col width-60>
+                  <p>{{user.lastname}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>DOB</ion-col>
+              <ion-col width-60>
+                  <p>{{user.dob}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Email</ion-col>
+              <ion-col width-60>
+                  <p>{{user.email}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Phone Number</ion-col>
+              <ion-col width-60>
+                  <p>{{user.telephone}}</p>
+              </ion-col>
+          </ion-row>
+      </ion-item>
+  </ion-list>
+
+  <p class="item-color">Company Details</p>
+
+  <ion-list>
+      <ion-item *ngFor="let user of userDetails">
+          <ion-row>
+              <ion-col width-40>Company Name</ion-col>
+              <ion-col width-60>
+                  <p>{{user.company_name}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Incorporation Date</ion-col>
+              <ion-col width-60>
+                  <p>{{user.companyformationday}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>GST Number</ion-col>
+              <ion-col width-60>
+                  <p>{{user.gst_number}}</p>
+              </ion-col>
+          </ion-row>
+          <!--<ion-row>
+              <ion-col width-40>Preffered Payment</ion-col>
+              <ion-col width-60>
+                  <p>{{user.prefferpayment}}</p>
+              </ion-col>
+          </ion-row>-->
+          <ion-row>
+              <ion-col width-40>Address Line1</ion-col>
+              <ion-col width-60>
+                  <p>{{user.address_1}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Address Line2</ion-col>
+              <ion-col width-60>
+                  <p>{{user.address_2}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>City</ion-col>
+              <ion-col width-60>
+                  <p>{{user.city}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>State</ion-col>
+              <ion-col width-60>
+                  <p>{{user.name}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-40>Pin Code</ion-col>
+              <ion-col width-60>
+                  <p>{{user.postcode}}</p>
+              </ion-col>
+          </ion-row>
+      </ion-item>
+  </ion-list>
+</ion-content>

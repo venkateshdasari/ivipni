@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from "@angular/core";
+import {
+  NavController,
+  PopoverController,
+  LoadingController,
+  ToastController,  
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',

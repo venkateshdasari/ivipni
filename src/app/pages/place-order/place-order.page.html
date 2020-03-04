@@ -1,0 +1,103 @@
+
+<ion-header>
+  <ion-nav color="primary">
+      <ion-title>Place Order</ion-title>
+  </ion-nav>
+</ion-header>
+
+<ion-content class="placeorder">
+  <ion-row class="row">
+      <p><b class="placeorderrow">Your Order</b>
+      </p>
+  </ion-row>
+  <hr>
+  <div class="aline">
+          <ion-row>
+              <div class="placecol1">
+              <ion-col> <b> Products </b> </ion-col></div>
+              <div class="placecol2"><ion-col> <b> Total </b>
+              </ion-col></div>
+          </ion-row>
+      </div>
+      <div *ngFor="let data of dataArray" class="item">
+          <ion-row>
+             <div class="placecol1"> <ion-col> <p class="ptag"><span>{{data.name}}-{{data.model}}({{data.quantity}}X{{data.price}})-<div *ngIf="data.option.length >1">(Size:{{data.option[0].value}})</div><div *ngIf="data.option.length == 1" >{{data.option[0].value}} </div><div *ngIf="data.option.length >1">{{data.option[1].value}} </div></span></p></ion-col></div>
+             <div class="placecol2"> <ion-col> <p class="ptag"> {{data.total |  currency:'INR':true}} </p>
+              </ion-col></div>
+          </ion-row>
+      </div>
+  
+  <hr>
+
+  <ion-card class="addresplaceorder">
+      <div *ngFor="let cost of allTotal">
+          <ion-row>
+              <ion-col width-80>
+                  {{cost.title}}
+              </ion-col>
+              <ion-col width-20>
+                  {{cost.value | currency:'INR':true}}
+              </ion-col>
+          </ion-row>
+      </div>
+  </ion-card>
+  <hr>
+
+  <ion-row class="row">
+      <p><b class="placeorderrow">
+    Deliver Details</b>
+      </p>
+  </ion-row>
+
+  <ion-card round>
+      <div>
+          <ion-row>
+              <ion-col class="clas1">
+                  <b>{{firstname}}</b>&nbsp;<b>{{lastname}}</b>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col class="clas2">
+                  <p>{{company}}</p>
+              </ion-col>
+          </ion-row>
+
+          <ion-row class="clas3place">
+              <ion-col class="clas2">
+                  <p>{{address_1}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row class="clas3place">
+              <ion-col class="clas2">
+                  <p>{{address_2}}</p>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col class="clas3">
+                  <p>{{city}},&nbsp;{{name}},&nbsp;{{postcode}}</p>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col class="clas4">
+                  <ion-icon ios="ios-call" md="md-call" item-left></ion-icon>
+                  {{telephone}}
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col class="clas5">
+                  <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+                  {{email}}
+              </ion-col>
+          </ion-row>
+      </div>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <button ion-button full color="primary" (click)="pay()">Proceed To Pay</button>
+  </ion-toolbar>
+</ion-footer>

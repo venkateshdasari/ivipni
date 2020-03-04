@@ -1,0 +1,126 @@
+<!--
+  Generated template for the PaymentPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-nav color="primary">
+      <ion-title>Payment Details</ion-title>
+  </ion-nav>
+</ion-header>
+
+<ion-content class="payment">
+  <ion-card class="ion-card">
+      <div *ngIf="paymenttype">
+          <ion-list radio-group [(ngModel)]="paymentMethods">
+              <ion-item>
+                  <ion-label>Online Payment <b>(₹{{totalamount}})</b>
+                  <p><small>(Incl 2% extra)</small></p>
+                  </ion-label>
+                  <ion-radio value="Online Payment" (click)="onlinepay()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Bank Transfer <b>(₹{{onlineamount}})</b>
+                     <p><small>(NEFT/RTGS/IMPS)</small></p> 
+                  </ion-label>
+                  <ion-radio value="Bank Transfer" (click)="change()"></ion-radio>
+
+              </ion-item>
+              
+              <!--<ion-item>
+                  <ion-label>IMPS</ion-label>
+                  <ion-radio value="IMPS" (click)="change()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label>RTGS</ion-label>
+                  <ion-radio value="RTGS" (click)="change()"></ion-radio>
+              </ion-item>-->
+              <ion-item>
+                  <ion-label>COD <b>(₹{{totalamount}})</b>
+                  <p><small>(Incl 2% extra)</small></p>
+                  </ion-label>
+                  <ion-radio value="COD" (click)="codchange()"></ion-radio>
+              </ion-item>
+          </ion-list>
+      </div>
+  </ion-card>
+<ion-card class="ion-card" *ngIf="paymentmodeltype">
+  <ion-item>
+      <ion-label color="primary">Select Bank</ion-label>
+       <ion-select [selectOptions]="selectOptions"  (ionChange)="optionsFn($event);">
+              <ion-option [value]="item"  *ngFor="let item of bankdata">
+                <span>{{item.bank_name}}</span>
+              </ion-option>
+            </ion-select>
+  </ion-item>
+  <!--<ion-item>
+                  <ion-label>SBI</ion-label>
+                  <ion-radio value="https://retail.onlinesbi.com/retail/login.htm" (click)="bankpay()"></ion-radio>
+              </ion-item>
+              <ion-item>-->
+                  <!--<ion-label>HDFC</ion-label>
+                  <ion-radio value="HDFC" (click)="HDFC()"></ion-radio>
+              </ion-item>-->
+</ion-card>
+  <ion-card class="ion-card">
+      <!--<div *ngIf="caseondelivery">
+          <ion-item>
+              <ion-label><b>Amount:</b>
+                  <p><small>(incl extra 2% COD charge)</small>-->
+                  <!--</p>
+              </ion-label>
+              <ion-label class="paymentamount">{{totalamount}}</ion-label>
+          </ion-item>-->
+      <!--</div>-->
+      <div *ngIf="paymentmodeltype">
+          <ion-item>
+              <ion-label><h2><b>Bank Transaction Details</b></h2></ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label class="paymentpageionlabel"><b>Date :</b>
+              </ion-label>
+             <ion-label class="paymentamount"><span ion-datepicker  [(value)]="localDate" [max]="datetoday"  clear class="ScheduleDate">
+  <span>{{localDate | date: 'dd/MM/yyyy'}} <ion-icon name="clipboard" item-left ></ion-icon> </span>
+</span></ion-label>
+<!--<ion-label (click)="calender()">{{datetoday}}</ion-label>-->
+              <!--<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="datetoday"></ion-datetime>-->
+          </ion-item>
+          <ion-item>
+              <ion-label><b>Amount :</b>
+              </ion-label>
+              <ion-label class="paymentamount"><b>{{onlineamount | currency:'INR':true}}</b></ion-label>
+          </ion-item>
+          <ion-item [(ngModel)]="twentyfivetransaction_id">
+              <ion-label class="paymenttransaction"><b>Transaction Id:</b>
+              </ion-label>
+              <ion-input class="textboox" type="text" placeholder="XXXXXXXXX" onfocus="this.placeholder = ''" onblur="this.placeholder = 'XXXXXXXXXX'"></ion-input>
+          </ion-item>
+      </div>
+  </ion-card>
+
+  <!--<ion-card class="addrespayment" *ngIf="paymentmodeltype">
+      <div *ngFor="let cost of allTotal">
+          <ion-row>
+              <ion-col>
+                  {{cost.title}}
+              </ion-col>
+              <ion-col width-20>
+                  {{cost.value | currency:'INR':true}}
+              </ion-col>
+          </ion-row>
+      </div>
+  </ion-card>-->
+</ion-content>
+
+<ion-footer *ngIf="caseondelivery">
+  <ion-toolbar>
+      <button ion-button full (click)="placeOrderforCod()"><b> PLACE ORDER </b> </button>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer *ngIf="paymentmodeltype">
+  <ion-toolbar>
+      <button ion-button full (click)="placeOrders()"><b> PLACE ORDER </b> </button>
+  </ion-toolbar>
+</ion-footer>

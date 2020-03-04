@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-nav color="primary">
+      <ion-title>My Account</ion-title>
+  </ion-nav>
+</ion-header>
+
+<ion-content class="account">
+  <ion-card>
+      <ion-card-header>
+          My Profile
+      </ion-card-header>
+      <hr>
+      <ion-card-content (click)="myprofile()">
+          PROFILE DETAILS
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+          My Orders
+      </ion-card-header>
+      <hr>
+
+      <ion-card-content (click)="myOrder()">
+          VIEW ALL ORDERS
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+          Payment History
+      </ion-card-header>
+      <hr>
+
+      <ion-card-content (click)="paymentSuccessFailure()">
+          PAYMENT HISTORY
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+          Password
+      </ion-card-header>
+      <hr>
+
+      <ion-card-content (click)="changePasswd()">
+          CHANGE YOUR PASSWORD
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+          Notification
+      </ion-card-header>
+      <hr>
+
+      <ion-card-content (click)="notification()">
+          NOTIFICATION
+      </ion-card-content>
+  </ion-card>
+</ion-content>

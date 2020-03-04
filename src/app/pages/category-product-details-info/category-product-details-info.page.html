@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav color="primary">
+      <ion-title>ProductDetails</ion-title>
+  </ion-nav>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="background-color">
+  <ion-card>
+      <img src={{image}} />
+      <ion-card-content>
+          <ion-row>
+              <ion-col width-80>
+                  <h2>{{name}}</h2>
+                  <h5>{{model}}</h5>
+              </ion-col>
+              <ion-col width-20>
+                  <div >
+                      <ion-icon name="heart" class="heart"></ion-icon>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <div class="options_height" >
+                  <ion-item>
+                      <ion-label floating></ion-label>
+
+                      <ion-select >
+                          <ion-select-option >{{item.name}}</ion-select-option>
+                      </ion-select>
+                  </ion-item>
+              </div>
+              <div class="options_height" >
+                  {{optionEvent.name}}
+              </div>
+              <div >
+                  <span>No Delar Available</span>
+              </div>
+          </ion-row>
+          <div class="margin_last_row">
+              <ion-row>
+                  <ion-col width-33>
+                      <div class="price_main">
+                          <p class="price">{{optionEvent.price}}</p>
+                          <p class="discount_amt">{{optionEvent.salesprice}}&nbsp;&nbsp;</p>
+                      </div>
+                  </ion-col>
+                  <ion-col width-33>
+                      <div >
+                          <ion-input type="number" value="" ></ion-input>
+                      </div>
+                  </ion-col>
+                  <ion-col width-33>
+                      <div class="icon_cart" >
+                          <ion-icon name="cart" class="cart" ></ion-icon>
+                      </div>
+                      <div  class="icon_cart_color">
+                          <div class="outofStack"> out of stock</div>
+                          <br>
+                      </div>
+                  </ion-col>
+              </ion-row>
+          </div>
+      </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <ion-card-header>
+          Details
+      </ion-card-header>
+      <ion-card-content>
+          <b>Specification</b>
+          <ion-row>{{meta_description}}</ion-row>
+          <b>Description</b>
+          <ion-row>{{description}}</ion-row>
+      </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <button ion-button color="primary" full (click)="addToCart()">Add To Cart</button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-nav color="primary">
+      <ion-title>Notification</ion-title>
+  </ion-nav>
+</ion-header>
+
+<ion-content>
+  <ion-item text-wrap>
+      Manage your push notification from this section &stay update with latest products & offer on Auto Parts.
+  </ion-item>
+  <ion-item no-lines (click)="updateValue()">
+      <ion-label> Notification</ion-label>
+      <ion-toggle [(ngModel)]="notify" (ngModelChange)="updateValue()"></ion-toggle>
+  </ion-item>
+</ion-content>

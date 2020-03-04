@@ -1,0 +1,145 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav color="primary">
+      <ion-title>Order Received</ion-title>
+  </ion-nav>  
+</ion-toolbar>
+</ion-header>
+
+<ion-content class="thank-you">
+  <div *ngIf="orderSuccess">
+      <ion-item no-lines>
+          <ion-row>
+              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" class="success"></ion-icon>
+          </ion-row>
+          <ion-row no-lines class="ion-item1">
+              <p class="success_text">Order Successful! </p>
+          </ion-row>
+
+          <ion-row class="ion-item2">
+              <p class="order_text">Thank you.Your order has been placed. </p>
+          </ion-row>
+      </ion-item>
+  </div>
+
+  <div *ngIf="orderFailure">
+      <ion-item>
+          <ion-row>
+              <ion-icon ios="ios-close-circle" md="md-close-circle" class="failure"></ion-icon>
+          </ion-row>
+
+          <ion-row no-lines class="ion-item1">
+              <p class="success_text">Order Failed! </p>
+          </ion-row>
+
+          <ion-row class="ion-item2">
+              <p class="order_text">Oops! Failed to place your order. </p>
+          </ion-row>
+      </ion-item>
+  </div>
+
+  <ion-item class="ion-item" no-lines>
+      <ion-row *ngIf="orderSuccess">
+          <ion-col>Order number</ion-col>
+          <br>
+          <ion-col>{{order_id}}</ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col>Date</ion-col>
+          <br>
+          <ion-col>{{date | date:'dd-MM-yyyy'}}</ion-col>
+      </ion-row>
+
+      <ion-row>
+          <!--<ion-col *ngIf="paymentMethod != 'COD'">Partial Amount</ion-col>-->
+          <ion-col>Amount</ion-col>
+          <ion-col><b *ngIf="paymentMethod != 'COD'">{{totalamount |  currency:'INR':true}}</b><b *ngIf="paymentMethod == 'COD'">{{totalamount |  currency:'INR':true}}</b>
+          </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col>Payment method</ion-col>
+          <br>
+          <ion-col>{{paymentMethod}}</ion-col>
+      </ion-row>
+
+  </ion-item>
+
+  <ion-item no-lines class="background">
+      <div class="header">
+          Order Details
+      </div>
+     
+      <div class="aline">
+          <ion-row>
+             <div class="placecol1"> <ion-col> <b> Products </b> </ion-col></div>
+             <div class="placecol2"> <ion-col> <b> Total </b>
+              </ion-col></div>
+          </ion-row>
+      </div>
+      <div *ngFor="let item of dataArray" class="item">
+          <ion-row>
+             <div class="placecol1"> <ion-col><p><span>{{item.name}}-{{item.model}} ({{item.quantity}}X{{item.price}})<div *ngIf="item.option.length >1">( Size:{{item.option[0].value}})</div><div *ngIf="item.option.length == 1">{{item.option[0].value}} </div><div *ngIf="item.option.length >1">{{item.option[1].value}}</div></span></p> </ion-col></div>
+          <div class="placecol2"> <ion-col> <p> {{item.total |  currency:'INR':true}} </p>
+              </ion-col></div>
+          </ion-row>
+      </div>
+
+  </ion-item>
+
+  <ion-card class="total">
+      <div *ngFor="let item of allTotal">
+          <ion-row>
+              <ion-col class="title" width-75>
+                  {{item.title}}
+              </ion-col>
+              <ion-col width-25>
+                  {{item.value | currency:'INR':true}}
+              </ion-col>
+          </ion-row>
+      </div>
+      <ion-row *ngIf="paymentMethod != 'Bank Transfer'">
+          <ion-col class="title" width-75>
+              <b>Total Amount:</b>
+              <p><small>(Incl 2% extra)</small></p>
+          </ion-col>
+          <ion-col width-25>
+              <b>{{totalamount |  currency:'INR':true}}</b>
+          </ion-col>
+      </ion-row>
+
+  </ion-card>
+
+  <div *ngIf="orderSuccess">
+      <ion-item>
+          <div class="header"> Delivery Details </div>
+          <div class="deliver-details">{{firstname}}&nbsp;{{lastname}}</div>
+          <div class="deliver-details">{{company}}</div>
+          <div class="deliver-details">{{address_1}}</div>
+          <div class="deliver-details">{{address_2}}</div>
+          <div class="deliver-details">{{city}},&nbsp;{{name}},&nbsp;{{postcode}}</div>
+          <div class="deliver-details_2">
+              <ion-icon ios="ios-call" md="md-call" item-left></ion-icon><span class="contact">{{telephone}}</span>
+          </div>
+          <div class="deliver-details_2">
+              <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+              <span class="contact">{{email}}</span>
+          </div>
+      </ion-item>
+  </div>
+
+  <div padding></div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+      <div *ngIf="orderSuccess">
+          <button color="primary" ion-button (click)="submit();" block> Home </button>
+      </div>
+      <div *ngIf="orderFailure">
+          <button color="primary" ion-button block outline (click)="notSubmit()">MoveToCart</button>
+      </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav color="primary">
+      <ion-title>Edit Address</ion-title>
+  </ion-nav>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="checkout">
+  <form >
+      <ion-list >
+          <ion-item no-lines>
+              Delivery Address
+          </ion-item>
+          <ion-row>
+              <ion-item width-30>
+                  <ion-label floating>First Name</ion-label>
+                  <ion-input type="text"  required></ion-input>
+              </ion-item>
+              <ion-item width-30>
+                  <ion-label floating>Last Name</ion-label>
+                  <ion-input type="text"   required></ion-input>
+              </ion-item>
+          </ion-row>
+          <ion-item width-30>
+              <ion-label floating> Company Name</ion-label>
+              <ion-input type="text"   required></ion-input>
+          </ion-item>
+          <ion-item width-30>
+              <ion-label floating> Address Line1</ion-label>
+              <ion-input type="text"   required></ion-input>
+          </ion-item>
+          <ion-item width-30>
+              <ion-label floating>Address Line2</ion-label>
+              <ion-input type="text"  required></ion-input>
+          </ion-item>
+          <ion-item width-30>
+              <ion-label floating>Town/City</ion-label>
+              <ion-input type="text"  required></ion-input>
+          </ion-item>
+          <ion-item width-50>
+              <ion-label floating>State</ion-label>
+              <ion-select >
+                  <ion-select-option >item.name</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Pin Code</ion-label>
+              <ion-input type="number"required></ion-input>
+          </ion-item>
+      </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <ion-row>
+          <ion-col>
+              <button ion-button primary full width-50 (click)="back();"> CANCLE</button>
+          </ion-col>
+          <ion-col>
+              <button color="primary" (click)="checkOutAddress()" ion-button full width-50 [disabled]="!checkForm.valid">UPDATE</button>
+          </ion-col>
+      </ion-row>
+  </ion-toolbar>
+</ion-footer>

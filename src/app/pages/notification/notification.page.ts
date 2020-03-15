@@ -1,5 +1,6 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from "@ionic/angular";
+import { NavController, LoadingController } from "ionic-angular";
 import { Products } from "../../../providers/commerce/products";
 import { Users } from "../../../providers/commerce/users";
 import { NetworkService } from "../../../providers/network-service/network-service";
@@ -26,7 +27,7 @@ export class NotificationPage implements OnInit {
   ) {
     var _this = this;
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {

@@ -1,5 +1,7 @@
+
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ToastController } from "@ionic/angular";
+import { NavController, NavParams, ToastController } from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 
 @Component({
@@ -79,7 +81,7 @@ export class OrderDetailsPage implements OnInit {
     });
   }
 
- async presentToast() {
+  presentToast() {
     let toast = this.toastCtrl.create({
       message: this.toastMessage,
       duration: 1000,
@@ -89,7 +91,7 @@ export class OrderDetailsPage implements OnInit {
     toast.onDidDismiss(() => {
     });
 
-   (await toast).present();
+    toast.present();
   }
 
   ngOnInit() {

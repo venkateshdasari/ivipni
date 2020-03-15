@@ -1,9 +1,10 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   ToastController,
   LoadingController
-} from "@ionic/angular";
+} from "ionic-angular";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { HomePage } from "../../home/home.page";
 import { LoginPage } from "../login/login.page";

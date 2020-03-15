@@ -1,5 +1,6 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from "@ionic/angular";
+import { NavController, LoadingController } from "ionic-angular";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Products } from "../../../providers/commerce/products";
 import { OrderDetailsPage } from "../order-details/order-details.page";
@@ -25,7 +26,7 @@ export class MyOrderPage implements OnInit {
     var _this = this;
 
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {

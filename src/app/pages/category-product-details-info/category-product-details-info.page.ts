@@ -1,5 +1,7 @@
+// all clear
+
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ToastController } from '@ionic/angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import {Users} from '../../../providers/commerce/users';
 import {NetworkService} from '../../../providers/network-service/network-service';
 import { Logger } from '../../../providers/logger/logger';

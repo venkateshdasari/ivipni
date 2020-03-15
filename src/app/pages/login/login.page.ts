@@ -1,5 +1,6 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController,LoadingController} from "@ionic/angular";
+import { NavController,LoadingController} from "ionic-angular";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Users } from "../../../providers/commerce/users";
 import { Rest } from "../../../providers/network/rest";
@@ -48,7 +49,7 @@ export class LoginPage implements OnInit {
     this.logger.debug("passwd " + this.passwd);
     this.loginMsg = "Validating User <" + this.loginId + ">. Please wait...";
  let loading = this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
  loading.present();
     this.user.validateUser(

@@ -6,6 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="checkout">
     <form [formGroup]="checkForm">
         <ion-list formGroupName="name">
@@ -41,7 +42,7 @@
             <ion-item width-50>
                 <ion-label floating>State</ion-label>
                 <ion-select formControlName="zone_id" (ionChange)="myOptionFn();" [(ngModel)]="name">
-                    <ion-option *ngFor="let item of optionsList" value="{{item.name}}">{{item.name}}</ion-option>
+                    <ion-select-option *ngFor="let item of optionsList" value="{{item.name}}">{{item.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
@@ -53,14 +54,14 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-      <ion-row>
-          <ion-col>
-              <button ion-button primary full width-50 (click)="back();"> CANCLE</button>
-          </ion-col>
-          <ion-col>
-              <button color="primary" (click)="checkOutAddress()" ion-button full width-50 [disabled]="!checkForm.valid">UPDATE</button>
-          </ion-col>
-      </ion-row>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <button ion-button primary full width-50 (click)="back();"> CANCLE</button>
+            </ion-col>
+            <ion-col>
+                <button color="primary" (click)="checkOutAddress()" ion-button full width-50 [disabled]="!checkForm.valid">UPDATE</button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
 </ion-footer>

@@ -1,5 +1,6 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from "@ionic/angular";
+import { NavController, NavParams } from "ionic-angular";
 import { SearchProductsPage } from "../search-products/search-products.page";
 import { CategoryProductDetailsPage } from "../category-product-details/category-product-details.page";
 import { Logger } from "../../../providers/logger/logger";

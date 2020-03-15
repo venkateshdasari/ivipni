@@ -1,14 +1,15 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   ToastController,
   LoadingController
-} from "@ionic/angular";
+} from "ionic-angular";
 import { Products } from "../../../providers/commerce/products";
 import { Users } from "../../../providers/commerce/users";
 import { Logger } from "../../../providers/logger/logger";
 import { NetworkService } from "../../../providers/network-service/network-service";
-import { AlertController } from '@ionic/angular';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -49,7 +50,7 @@ dataarry =[];
     };
 
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {

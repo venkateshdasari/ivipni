@@ -1,5 +1,7 @@
+// all clear
+
 import { Component, OnInit } from '@angular/core';
-import { NavController,ToastController, LoadingController} from "@ionic/angular";
+import { NavController,ToastController, LoadingController} from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { Products } from "../../../providers/commerce/products";
 import { NetworkService } from "../../../providers/network-service/network-service";
@@ -44,7 +46,7 @@ export class ShoppingcartPage implements OnInit {
     _this.myValue = [];
 
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {
@@ -184,7 +186,7 @@ _this.logger.debug("allTotal " + JSON.stringify(_this.allTotal));
     var _this = this;
     
     let loading = _this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
     
 

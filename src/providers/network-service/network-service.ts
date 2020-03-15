@@ -1,5 +1,6 @@
+// error line no 17
 import { Injectable } from "@angular/core";
-import { AlertController } from "@ionic/angular";
+import { AlertController } from "ionic-angular";
 import { Network } from "@ionic-native/network";
 import { Logger } from "../logger/logger";
 
@@ -24,7 +25,7 @@ export class NetworkService {
  async showNetworkAlert() {
     var _this = this;
     let networkAlert = await _this.alertCtrl.create({
-      header: "No Internet Connection",
+      title: "No Internet Connection",
       message:
         "Cannot proceed with this operation. No network connection!. Please check your internet connection",
       buttons: [
@@ -46,7 +47,7 @@ export class NetworkService {
   async showErrorAlert() {
     var _this = this;
     let networkAlert = await _this.alertCtrl.create({
-      header: "Error",
+      title: "Error",
       message: "There seems to be system error. We are not able to proceed.",
       buttons: [
         {
@@ -64,7 +65,7 @@ export class NetworkService {
     this.logger.debug("msg " + msg);
     var _this = this;
     let networkAlert = await _this.alertCtrl.create({
-      header: "Alert",
+      title: "Alert",
       message: msg,
       buttons: [
         {

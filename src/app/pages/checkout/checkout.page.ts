@@ -1,5 +1,7 @@
+// has 4 errors line no 50, 120, 122,125
+
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController } from "@ionic/angular";
+import { NavController, NavParams, LoadingController } from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { FormBuilder, Validators } from "@angular/forms";
 import { FormControl, FormGroup } from "@angular/forms";
@@ -74,7 +76,7 @@ export class CheckoutPage implements OnInit {
       });
   
       let loading = loadingCtrl.create({
-        message: `<ion-spinner name="bubbles"></ion-spinner>`
+        content: `<ion-spinner name="bubbles"></ion-spinner>`
       });
   
       if (_this.networkService.nullConnection()) {

@@ -6,88 +6,88 @@
 </ion-header>
 
 <ion-content padding class="address">
-  <ion-item>
-      <ion-icon ios="ios-pin" md="md-pin" item-left class="color2"></ion-icon>
-      <b>Delivery Address</b>
-      <ion-icon ios="ios-add-circle" md="md-add-circle" item-right class="color" (click)="checkoutFn()"></ion-icon>
-  </ion-item>
-
-  <ion-card *ngFor="let details of firstIndex" round light>
-      <ion-card-header>
-          <ion-row>
-              <ion-col width-90 class="first">
-                  <b>{{details.firstname}}</b>&nbsp;<b>{{details.lastname}}</b>
-              </ion-col>
-          </ion-row>
-      </ion-card-header>
-
-      <ion-card-content (click)="placeOrder(details)">
-          <ion-row class="addressshow">
-              <p>{{details.company}}</p>
-          </ion-row>
-          <ion-row class="addressshow">
-             <p> {{details.address_1}} </p></ion-row>
-              <ion-row class="addressshow">
-              <p>{{details.address_2}} </p></ion-row>
-          <ion-row class="addressshow">
-              <p> <span>{{details.city}},&nbsp;{{details.name}},&nbsp;{{details.postcode}}</span></p>
-          </ion-row>
-          <ion-row class="addressshow">
-              <ion-col>
-                  <ion-icon ios="ios-call" md="md-call" item-left></ion-icon>
-                  {{details.telephone}}
-              </ion-col>
-          </ion-row>
-          <ion-row class="addressshow">
-              <ion-col class="mail">
-                  <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
-                  {{details.email}}
-              </ion-col>
-          </ion-row>
-      </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngFor="let details of checkOutAddr" round light>
-      <ion-card-header>
-          <ion-row>
-              <ion-col width-80 class="first">
-                  <b>{{details.firstname}}</b>&nbsp;<b>{{details.lastname}}</b>
-              </ion-col>
-              <ion-col width-20 class="last">
-                  <ion-icon ios="ios-create" md="md-create" item-right class="color1" (click)="checkoutEdit(details)"></ion-icon>
-              </ion-col>
-          </ion-row>
-      </ion-card-header>
-
-      <ion-card-content (click)="placeOrder(details)">
-          <ion-row class="addressshow">
-              <p>{{details.company}}</p>
-          </ion-row>
-          <ion-row class="addressshow">
-              <p>{{details.address_1}}</p>
-          </ion-row>
-           <ion-row class="addressshow">
-              <p>{{details.address_2}}</p>
-          </ion-row>
-          <ion-row class="addressshow">
-              <p> {{details.city}},&nbsp;{{details.name}},&nbsp;{{details.postcode}}</p>
-          </ion-row>
-          <ion-row>
-              <ion-col>
-                  <ion-icon ios="ios-call" md="md-call" item-left></ion-icon>
-                  {{details.telephone}}
-              </ion-col>
-          </ion-row>
-          <ion-row>
-              <ion-col class="mail">
-                  <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
-                  {{details.email}}
-              </ion-col>
-          </ion-row>
-      </ion-card-content>
-      <hr>
-      <ion-buttons end>
-          <button ion-button small color="gray" (click)="deleteAddress(details)">Remove</button>
-      </ion-buttons>
-  </ion-card>
-</ion-content>
+    <ion-item>
+        <ion-icon ios="ios-pin" md="md-pin" item-left class="color2"></ion-icon>
+        <b>Delivery Address</b>
+        <ion-icon ios="ios-add-circle" md="md-add-circle" item-right class="color" (click)="checkoutFn()"></ion-icon>
+    </ion-item>
+  
+    <ion-card *ngFor="let details of firstIndex" round light>
+        <ion-card-header>
+            <ion-row>
+                <ion-col width-90 class="first">
+                    <b>{{details.firstname}}</b>&nbsp;<b>{{details.lastname}}</b>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+  
+        <ion-card-content (click)="placeOrder(details)">
+            <ion-row class="addressshow">
+                <p>{{details.company}}</p>
+            </ion-row>
+            <ion-row class="addressshow">
+               <p> {{details.address_1}} </p></ion-row>
+                <ion-row class="addressshow">
+                <p>{{details.address_2}} </p></ion-row>
+            <ion-row class="addressshow">
+                <p> <span>{{details.city}},&nbsp;{{details.name}},&nbsp;{{details.postcode}}</span></p>
+            </ion-row>
+            <ion-row class="addressshow">
+                <ion-col>
+                    <ion-icon ios="ios-call" md="md-call" item-left></ion-icon>
+                    {{details.telephone}}
+                </ion-col>
+            </ion-row>
+            <ion-row class="addressshow">
+                <ion-col class="mail">
+                    <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+                    {{details.email}}
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+  
+    <ion-card *ngFor="let details of checkOutAddr" round light>
+        <ion-card-header>
+            <ion-row>
+                <ion-col width-80 class="first">
+                    <b>{{details.firstname}}</b>&nbsp;<b>{{details.lastname}}</b>
+                </ion-col>
+                <ion-col width-20 class="last">
+                    <ion-icon ios="ios-create" md="md-create" item-right class="color1" (click)="checkoutEdit(details)"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+  
+        <ion-card-content (click)="placeOrder(details)">
+            <ion-row class="addressshow">
+                <p>{{details.company}}</p>
+            </ion-row>
+            <ion-row class="addressshow">
+                <p>{{details.address_1}}</p>
+            </ion-row>
+             <ion-row class="addressshow">
+                <p>{{details.address_2}}</p>
+            </ion-row>
+            <ion-row class="addressshow">
+                <p> {{details.city}},&nbsp;{{details.name}},&nbsp;{{details.postcode}}</p>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-icon ios="ios-call" md="md-call" item-left></ion-icon>
+                    {{details.telephone}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="mail">
+                    <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+                    {{details.email}}
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+        <hr>
+        <ion-buttons end>
+            <button ion-button small color="gray" (click)="deleteAddress(details)">Remove</button>
+        </ion-buttons>
+    </ion-card>
+  </ion-content>

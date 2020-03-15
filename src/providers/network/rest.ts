@@ -1,6 +1,7 @@
+// error at line no 223
 import { Injectable } from "@angular/core";
 import { HttpClient  } from "@angular/common/http";
-import { LoadingController } from "@ionic/angular";
+import { LoadingController } from "ionic-angular";
 import { Observable } from "rxjs";
 import { Configurator } from "../configurator/configurator";
 import { NetworkService } from "../network-service/network-service";
@@ -167,7 +168,7 @@ export class Rest {
       authdetails += "&";
     }
     let loading = _this.loadingCtrl.create({
-      message:`<ion-spinner name="bubbles"></ion-spinner>`
+      content:`<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {
@@ -193,7 +194,7 @@ export class Rest {
   public gets(url: string): Observable<any> {
     var _this = this;
     let loading = _this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     _this.logger.debug("Calling " + _this.configurator.restServerBaseUrl + url);

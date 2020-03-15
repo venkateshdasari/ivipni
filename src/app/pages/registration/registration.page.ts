@@ -1,10 +1,12 @@
+// all clear
+
 import { Component, OnInit } from '@angular/core';
 
-import { NavController, LoadingController } from "@ionic/angular";
+import { NavController, LoadingController } from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { Rest } from "../../../providers/network/rest";
 import { FormBuilder, Validators } from "@angular/forms";
-import { ToastController } from "@ionic/angular";
+import { ToastController } from "ionic-angular";
 import { LoginPage } from "../login/login.page";
 import { FormControl, FormGroup } from "@angular/forms";
 import { Products } from "../../../providers/commerce/products";
@@ -118,7 +120,7 @@ export class RegistrationPage implements OnInit {
     console.log(_this.registrationForm);
 
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {
@@ -170,7 +172,7 @@ presentToast() {
   submit() {
     var _this = this;
     let loading = _this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     _this.logger.debug(

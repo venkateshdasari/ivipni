@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController } from "@ionic/angular";
+import { NavController, NavParams, LoadingController } from "ionic-angular";
 import { Products } from "../../../providers/commerce/products";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Logger } from "../../../providers/logger/logger";
@@ -26,7 +26,7 @@ export class MyProfilePage implements OnInit {
     var _this = this;
 
     let loading = loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {

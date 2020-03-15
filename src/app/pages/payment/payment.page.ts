@@ -1,5 +1,6 @@
+// has errors at line number 194 ,370
 import { Component, OnInit ,ViewChild } from '@angular/core';
-import { Platform, NavController, NavParams, LoadingController } from "@ionic/angular";
+import { Platform, NavController, NavParams, LoadingController } from "ionic-angular";
 import { ThankYouPage } from "../thank-you/thank-you.page";
 import { Users } from "../../../providers/commerce/users";
 import { NetworkService } from "../../../providers/network-service/network-service";
@@ -16,7 +17,7 @@ import { Products } from "../../../providers/commerce/products";
 })
 export class PaymentPage implements OnInit {
 
-  @ViewChild(DatePickerDirective) public datepickerDirective: DatePickerDirective;
+  @ViewChild(DatePickerDirective,{static:true}) public datepickerDirective: DatePickerDirective;
   public closeDatepicker() {
     this.datepickerDirective.modal.dismiss();
   }
@@ -250,7 +251,7 @@ export class PaymentPage implements OnInit {
       totals: _this.allTotal
     };
     let loading = _this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     _this.logger.debug(

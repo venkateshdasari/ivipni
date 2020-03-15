@@ -1,16 +1,18 @@
+// has one error at line 205
+
 import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   ToastController,
   LoadingController
-} from "@ionic/angular";
+} from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Logger } from "../../../providers/logger/logger";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Holders } from "../../../providers/holders/holders";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-import { AlertController } from '@ionic/angular';
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -68,7 +70,7 @@ export class SearchProductsPage implements OnInit {
 
   searchText() {
     let loading = this.loadingCtrl.create({
-      message: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`
     });
     this.page = 1;
     this.searchValue = this.myForm.value.search;

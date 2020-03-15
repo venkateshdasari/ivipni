@@ -1,5 +1,7 @@
+
+
 import { Component, OnInit } from '@angular/core';
-import { NavController,LoadingController, Platform, ToastController} from "@ionic/angular";
+import { NavController,LoadingController, Platform, ToastController} from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { LoginPage } from "../login/login.page";
 import { Logger } from "../../../providers/logger/logger";
@@ -215,7 +217,7 @@ export class ForgotPasswordPage implements OnInit {
         }
       );
   }
-  async presentToast() {
+   presentToast() {
     let toast = this.toastCtrl.create({
       message: this.toastMessage,
       duration: 1000,

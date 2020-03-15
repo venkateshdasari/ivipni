@@ -1,8 +1,9 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController } from "@ionic/angular";
+import { NavController } from "ionic-angular";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Users } from "../../../providers/commerce/users";
-import { ToastController } from "@ionic/angular";
+import { ToastController } from "ionic-angular";
 import { AccountPage } from "../account/account.page";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Logger } from "../../../providers/logger/logger";

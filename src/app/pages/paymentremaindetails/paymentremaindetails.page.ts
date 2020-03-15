@@ -1,5 +1,7 @@
+// all clear
+
 import { Component, OnInit,ViewChild  } from '@angular/core';
-import { NavController, NavParams } from "@ionic/angular";
+import { NavController, NavParams } from "ionic-angular";
 import { PaythankYouPage } from "../paythank-you/paythank-you.page";
 import { Users } from "../../../providers/commerce/users";
 import { NetworkService } from "../../../providers/network-service/network-service";
@@ -13,7 +15,7 @@ import { DatePickerDirective } from 'ion-datepicker';
 })
 export class PaymentremaindetailsPage implements OnInit {
 
-  @ViewChild(DatePickerDirective) public datepickerDirective:DatePickerDirective;
+  @ViewChild(DatePickerDirective,{static:true}) public datepickerDirective:DatePickerDirective;
   public closeDatepicker(){
     this.datepickerDirective.modal.dismiss();
 }

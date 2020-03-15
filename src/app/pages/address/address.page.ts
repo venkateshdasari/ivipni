@@ -1,5 +1,6 @@
+// all clear
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController } from "@ionic/angular";
+import { NavController, NavParams, LoadingController } from "ionic-angular";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Products } from "../../../providers/commerce/products";
 import { PlaceOrderPage } from "../place-order/place-order.page"
@@ -49,7 +50,7 @@ export class AddressPage implements OnInit {
     _this.logger.info("invoking ionviewDidEnter for address");
 
     let loading = await _this.loadingCtrl.create({
-      message:`<ion-spinner name="bubbles"></ion-spinner>`
+      content:`<ion-spinner name="bubbles"></ion-spinner>`
     });
 
     if (_this.networkService.nullConnection()) {

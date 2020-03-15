@@ -3,10 +3,9 @@ import {
   NavController,
   PopoverController,
   LoadingController,
-  ToastController,  
-} from '@ionic/angular';
-
-
+  ToastController,
+  Nav  
+} from 'ionic-angular';
 import { Storage } from "@ionic/storage";
 import { Users } from "../../providers/commerce/users";
 import { Products } from "../../providers/commerce/products";
@@ -28,7 +27,7 @@ import { Logger } from "../../providers/logger/logger";
 import { PaymentremainPage } from "../pages/paymentremain/paymentremain.page";
 import { Holders } from "../../providers/holders/holders";
 import { AppVersion } from "@ionic-native/app-version";
-import { Slides,Platform } from "@ionic/angular";
+import { Slides,Platform } from "ionic-angular";
 import { Device } from '@ionic-native/device';
 import { OneSignal } from '@ionic-native/onesignal';
 import { AlertController } from '@ionic/angular';
@@ -40,8 +39,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  @ViewChild(Slides) slides: Slides;
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild(Slides,{static:true}) slides: Slides;
+  @ViewChild(Nav,{static:true}) nav: Nav;
     mySlideOptions = {
       initialSlide: 2,
       loop: true,
@@ -101,7 +100,7 @@ export class HomePage {
       _this.logger.info("logdata " + JSON.stringify(_this.loginData));
   
       let loading = loadingCtrl.create({
-        message: `<ion-spinner name="bubbles"></ion-spinner>`
+        content:`<ion-spinner name="bubbles"></ion-spinner>`
       });
   
       _this.appVersion.getVersionNumber().then(version => {
@@ -258,11 +257,11 @@ export class HomePage {
     }
     amoutremain() {
       this.logger.info("invoking aboutus page");
-      this.navCtrl.push(paymentremainPage, {});
+      this.navCtrl.push(PaymentremainPage, {});
     }
     sellerinfo() {
       this.logger.info("invoking aboutus page");
-      this.navCtrl.push(SellerinfoPage, {});
+      this.navCtrl.push(SellerInfoPage, {});
     }
   
     termsOfUs() {
@@ -270,9 +269,9 @@ export class HomePage {
       this.navCtrl.push(TermsOfUsePage, {});
     }
   
-    addToCart(productCategory) {
+   async addToCart(productCategory) {
       if (productCategory.alternate_brand == 'YES') {
-        let alert = this.alertCtrl.create({
+        let alert = await this.alertCtrl.create({
           header: 'Ivipni',
           message: 'Are you fine with same product from other manufacturers (ex: Tata, SKF, FAG, etc)?',
           buttons: [
@@ -376,7 +375,7 @@ export class HomePage {
   
     cartFn() {
       this.logger.info("invoking Shopingcart page");
-      this.navCtrl.push(ShopingcartPage, {});
+      this.navCtrl.push(ShoppingcartPage, {});
     }
   
     //my account
@@ -403,6 +402,6 @@ export class HomePage {
   //   }
   
     quickOrderFn() {
-      this.navCtrl.push(SearchProducts, {});
+      this.navCtrl.push(SearchProductsPage, {});
     }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from "@ionic/angular";
+
 
 
 @Component({
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsPage implements OnInit {
 
-  constructor() { }
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
   }

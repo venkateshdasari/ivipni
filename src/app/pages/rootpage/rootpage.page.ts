@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, Platform } from "@ionic/angular";
+
 
 @Component({
   selector: 'app-rootpage',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rootpage.page.scss'],
 })
 export class RootpagePage implements OnInit {
-
-  constructor() { }
+  constructor(public navCtrl: NavController, public platform: Platform) {
+    this.platform.ready().then(() => {
+    });
+  }
 
   ngOnInit() {
   }

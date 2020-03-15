@@ -1,7 +1,8 @@
 {
   "name": "ivipni",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

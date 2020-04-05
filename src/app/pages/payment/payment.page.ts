@@ -14,6 +14,10 @@ import { DatePickerDirective } from "ion-datepicker";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Products } from "../../../providers/commerce/products";
 
+
+declare var RazorpayCheckout: any;
+
+
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.page.html",

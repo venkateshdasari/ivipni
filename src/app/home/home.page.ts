@@ -144,10 +144,11 @@ export class HomePage {
     //_this.player_id= _this.oneSignal.addSubscriptionObserver();
 
     _this.device_token = _this.device.uuid;
-    _this.appVersion.getVersionNumber().then((version) => {
-      _this.appVersion = version;
-    });
-    console.log(" _this.appVersion " + JSON.stringify(_this.appVersion));
+    
+    //_this.appVersion.getVersionNumber().then((version) => {
+    //  _this.appVersion = version as const;
+    //});
+    //console.log(" _this.appVersion " + JSON.stringify(_this.appVersion));
     _this.deviceInfo();
   }
   // ngAfterViewInit() {
@@ -358,9 +359,9 @@ export class HomePage {
       _this.networkService.showSuccessAlert("minimum quantity 1");
     }
   }
-  call() {
-    window.location = "tel:8310914770";
-  }
+  //call() {
+  //  window.location = "tel:8310914770";
+  //}
 
   privacyPolicy() {
     this.logger.info("invoking privacyPolicy page");

@@ -34,6 +34,7 @@ export class CheckoutPage implements OnInit {
   postcode;
   zone_id;
   name;
+  checkForm: FormGroup;
 
   constructor( public navCtrl: NavController,
     public navParams: NavParams,

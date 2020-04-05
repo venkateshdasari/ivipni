@@ -1,6 +1,6 @@
 // error at line no 223
 import { Injectable } from "@angular/core";
-import { HttpClient  } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { LoadingController } from "ionic-angular";
 import { Observable } from "rxjs";
 import { Configurator } from "../configurator/configurator";
@@ -84,8 +84,8 @@ export class Rest {
           data
         )
         .subscribe(
-          result => _this.postHandleSuccess(result, successCallbackFn, url),
-          error => _this.postHandleError(error, errorcallbackFn, url)
+          (result) => _this.postHandleSuccess(result, successCallbackFn, url),
+          (error) => _this.postHandleError(error, errorcallbackFn, url)
         );
     }
   }
@@ -107,7 +107,7 @@ export class Rest {
       _this.networkService.showNetworkAlert();
       errorcallbackFn();
     } else {
-    // loading.present();
+      // loading.present();
       this.http
         .post(
           _this.configurator.restServerBaseUrl +
@@ -116,8 +116,8 @@ export class Rest {
           data
         )
         .subscribe(
-          result => _this.postHandleSuccess(result, successCallbackFn, url),
-          error => _this.postHandleError(error, errorcallbackFn, url)
+          (result) => _this.postHandleSuccess(result, successCallbackFn, url),
+          (error) => _this.postHandleError(error, errorcallbackFn, url)
         );
     }
   }
@@ -148,8 +148,8 @@ export class Rest {
           data
         )
         .subscribe(
-          result => _this.postsHandleSuccess(result, successCallbackFn),
-          error => _this.postsHandleError(error, errorcallbackFn)
+          (result) => _this.postsHandleSuccess(result, successCallbackFn),
+          (error) => _this.postsHandleError(error, errorcallbackFn)
         );
     }
   }
@@ -168,7 +168,7 @@ export class Rest {
       authdetails += "&";
     }
     let loading = _this.loadingCtrl.create({
-      content:`<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`,
     });
 
     if (_this.networkService.nullConnection()) {
@@ -184,9 +184,9 @@ export class Rest {
             url
         )
         .subscribe(
-          result =>
+          (result) =>
             _this.handleSuccess(result, successCallbackFn, loading, url),
-          error => _this.handleError(error, errorcallbackFn, loading, url)
+          (error) => _this.handleError(error, errorcallbackFn, loading, url)
         );
     }
   }
@@ -194,7 +194,7 @@ export class Rest {
   public gets(url: string): Observable<any> {
     var _this = this;
     let loading = _this.loadingCtrl.create({
-      content: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`,
     });
 
     _this.logger.debug("Calling " + _this.configurator.restServerBaseUrl + url);
@@ -210,24 +210,22 @@ export class Rest {
       authdetails +
       _this.configurator.restServerControllerUrl +
       url;
-    var obs = Observable.create(function(observer) {
+    var obs = Observable.create(function (observer) {
       if (_this.networkService.nullConnection()) {
         _this.logger.info("invoking networkService rest.ts file");
         observer.error();
         _this.networkService.showNetworkAlert();
       } else {
-        _this.http
-          .get(fullUrl)
-          .subscribe(
-            result =>
-              _this.handleSuccessObserver(
-                result.json(),
-                observer,
-                loading,
-                url
-              ),
-            error => _this.handleErrorObserver(error, observer, loading, url)
-          );
+        _this.http.get(fullUrl).subscribe(
+          (result) =>
+            _this.handleSuccessObserver(
+              (result) => result.json(),
+              observer,
+              loading,
+              url
+            ),
+          (error) => _this.handleErrorObserver(error, observer, loading, url)
+        );
       }
     });
     return obs;

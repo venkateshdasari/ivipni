@@ -1,21 +1,22 @@
-
-
-import { Component, OnInit } from '@angular/core';
-import { NavController,LoadingController, Platform, ToastController} from "ionic-angular";
+import { Component, OnInit } from "@angular/core";
+import {
+  NavController,
+  LoadingController,
+  Platform,
+  ToastController,
+} from "ionic-angular";
 import { Users } from "../../../providers/commerce/users";
 import { LoginPage } from "../login/login.page";
 import { Logger } from "../../../providers/logger/logger";
 import { Holders } from "../../../providers/holders/holders";
 
-@Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.page.html',
-  styleUrls: ['./forgot-password.page.scss'],
-})
-
 declare var window;
 declare var cordova;
-
+@Component({
+  selector: "app-forgot-password",
+  templateUrl: "./forgot-password.page.html",
+  styleUrls: ["./forgot-password.page.scss"],
+})
 export class ForgotPasswordPage implements OnInit {
   public loginId = "";
   public otp = "";
@@ -32,37 +33,40 @@ export class ForgotPasswordPage implements OnInit {
   toastMessage: string;
   secondDiv: boolean = false;
 
-  constructor(    public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public user: Users,
     public toastCtrl: ToastController,
     public platform: Platform,
     public logger: Logger,
     public holders: Holders,
-     public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OtpPage');
+    console.log("ionViewDidLoad OtpPage");
     var permissions = cordova.plugins.permissions;
-     var errorCallback = () => {
-              this.holders.showSuccessAlert('READ_SMS permission is not turned on');
-              }
-      permissions.requestPermission(
-                permissions.READ_SMS,
-                (status) => {
-                   console.log("vidya1"+JSON.stringify(status));
-                // if(!status.hasPermission) {
-                //   console.log("vidya"+JSON.stringify(status));
-                //   errorCallback();
-                // }
-                // else{
-                //    console.log("vidya2"+JSON.stringify(status));
-                //   this.getSMS();
-                // }
-              },
-              errorCallback);
-              console.log("permissions"+permissions);
+    var errorCallback = () => {
+      this.holders.showSuccessAlert("READ_SMS permission is not turned on");
+    };
+    permissions.requestPermission(
+      permissions.READ_SMS,
+      (status) => {
+        console.log("vidya1" + JSON.stringify(status));
+        // if(!status.hasPermission) {
+        //   console.log("vidya"+JSON.stringify(status));
+        //   errorCallback();
+        // }
+        // else{
+        //    console.log("vidya2"+JSON.stringify(status));
+        //   this.getSMS();
+        // }
+      },
+      errorCallback
+    );
+    console.log("permissions" + permissions);
   }
 
   generateOTP() {
@@ -77,7 +81,7 @@ export class ForgotPasswordPage implements OnInit {
         this.customer_id = id;
 
         this.logger.debug("checking the customerid " + this.customer_id);
-          this.emailButton2 = false;
+        this.emailButton2 = false;
         this.emailButton1 = true;
         if (this.platform.is("android")) {
           // //setting the permission for android above 6.0
@@ -87,19 +91,24 @@ export class ForgotPasswordPage implements OnInit {
             this.holders.dissmissLoadingCustom();
             this.platform.ready().then(() => {
               var permissions = cordova.plugins.permissions;
-              permissions.checkPermission( permissions.READ_SMS,checkPermissionCallback,null);
+              permissions.checkPermission(
+                permissions.READ_SMS,
+                checkPermissionCallback,
+                null
+              );
               this.getSMS();
               function checkPermissionCallback(status) {
                 console.log("checking first " + JSON.stringify(status));
                 if (!status.hasPermission) {
                   console.log("invoking the if state");
                   var errorCallback = () => {
-                    this.holders.showSuccessAlert("READ_SMS permission is not turned on");
-                   
+                    this.holders.showSuccessAlert(
+                      "READ_SMS permission is not turned on"
+                    );
                   };
-             permissions.requestPermission(
+                  permissions.requestPermission(
                     permissions.READ_SMS,
-                    status => {
+                    (status) => {
                       console.log(status);
                       if (!status.hasPermission) {
                         errorCallback();
@@ -107,13 +116,12 @@ export class ForgotPasswordPage implements OnInit {
                         this.getSMS();
                       }
                     },
-                    
-                errorCallback
-                );
+
+                    errorCallback
+                  );
                 }
               }
-            }
-            );
+            });
           }, 10000);
         } else {
           console.log("it is not cordova");
@@ -153,7 +161,7 @@ export class ForgotPasswordPage implements OnInit {
 
       // following 2 filters can be used to list page up/down
       indexFrom: 0, // start from index 0
-      maxCount: 10 // count of SMS to return each time
+      maxCount: 10, // count of SMS to return each time
     };
 
     this.logger.debug("getSms" + JSON.stringify(filter));
@@ -161,13 +169,13 @@ export class ForgotPasswordPage implements OnInit {
     if (window.SMS)
       window.SMS.listSMS(
         filter,
-        data => {
+        (data) => {
           //Filterd Data
           this.logger.debug("checking the filter data " + JSON.stringify(data));
 
           for (var i = 0; i < data.length; i++) {
             this.logger.debug("checking");
-                    
+
             if (data[i].address.substr(3, 7) == "VIPNI") {
               this.logger.debug(
                 "checking the text of adress " + data[i].address.substr(3, 7)
@@ -181,8 +189,7 @@ export class ForgotPasswordPage implements OnInit {
               this.logger.debug("checking the otpNumber " + this.otpNumber);
               break;
             }
-            console.log("Vidya"+this.otpNumber);
-            
+            console.log("Vidya" + this.otpNumber);
           }
 
           if (this.otpNumber) {
@@ -193,8 +200,8 @@ export class ForgotPasswordPage implements OnInit {
                 if (result == "1") {
                   this.access_token = id;
                   this.email = false;
-                  this.emailButton1=false;
-                 this.emailButton2=false;
+                  this.emailButton1 = false;
+                  this.emailButton2 = false;
                   this.secondDiv = true;
                   this.logger.debug(
                     "checking access tocken " + this.access_token
@@ -212,22 +219,22 @@ export class ForgotPasswordPage implements OnInit {
             this.emailButton2 = true;
           }
         },
-        err => {
+        (err) => {
           this.logger.debug("checking the err " + JSON.stringify(err));
         }
       );
   }
-   presentToast() {
+  presentToast() {
     let toast = this.toastCtrl.create({
       message: this.toastMessage,
       duration: 1000,
-      position: "middle"
+      position: "middle",
     });
 
     toast.onDidDismiss(() => {
       this.logger.info("Dismissed toast");
     });
-     toast.present();
+    toast.present();
   }
 
   changePassword() {
@@ -235,26 +242,24 @@ export class ForgotPasswordPage implements OnInit {
     var newPassword = {
       user_id: _this.customer_id,
       access_token: _this.access_token,
-      password: _this.newpassword
+      password: _this.newpassword,
     };
     _this.logger.debug("checking newPassword " + JSON.stringify(newPassword));
     if (_this.newpassword === _this.conformPassword) {
-    //     let loading = _this.loadingCtrl.create({
-    //  content: `<ion-spinner name="bubbles"></ion-spinner>`
-    //  });
+      //     let loading = _this.loadingCtrl.create({
+      //  content: `<ion-spinner name="bubbles"></ion-spinner>`
+      //  });
       this.user.newPassword(newPassword, (result, data) => {
         if (result == "1") {
           _this.logger.debug("success callback of the new password");
-      
 
           _this.toastMessage = "Password changed successfully";
-         // _this.holders.dissmissLoadingCustom();
-          
-           _this.presentToast();
-           
-   // loading.dismiss();
-         _this.navCtrl.setRoot(LoginPage, {});
+          // _this.holders.dissmissLoadingCustom();
 
+          _this.presentToast();
+
+          // loading.dismiss();
+          _this.navCtrl.setRoot(LoginPage, {});
         } else {
           _this.logger.error("error of otp " + data);
         }
@@ -265,8 +270,4 @@ export class ForgotPasswordPage implements OnInit {
       _this.presentToast();
     }
   }
-
-
-
-
 }

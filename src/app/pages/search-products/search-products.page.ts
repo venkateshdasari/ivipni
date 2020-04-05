@@ -11,7 +11,7 @@ import { NetworkService } from "../../../providers/network-service/network-servi
 import { Logger } from "../../../providers/logger/logger";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Holders } from "../../../providers/holders/holders";
-import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AlertController } from 'ionic-angular';
 
 

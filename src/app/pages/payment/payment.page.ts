@@ -1,23 +1,27 @@
 // has errors at line number 194 ,370
-import { Component, OnInit ,ViewChild } from '@angular/core';
-import { Platform, NavController, NavParams, LoadingController } from "ionic-angular";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import {
+  Platform,
+  NavController,
+  NavParams,
+  LoadingController,
+} from "ionic-angular";
 import { ThankYouPage } from "../thank-you/thank-you.page";
 import { Users } from "../../../providers/commerce/users";
 import { NetworkService } from "../../../providers/network-service/network-service";
 import { Logger } from "../../../providers/logger/logger";
-import { DatePickerDirective } from 'ion-datepicker';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { DatePickerDirective } from "ion-datepicker";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Products } from "../../../providers/commerce/products";
 
-
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.page.html',
-  styleUrls: ['./payment.page.scss'],
+  selector: "app-payment",
+  templateUrl: "./payment.page.html",
+  styleUrls: ["./payment.page.scss"],
 })
 export class PaymentPage implements OnInit {
-
-  @ViewChild(DatePickerDirective,{static:true}) public datepickerDirective: DatePickerDirective;
+  @ViewChild(DatePickerDirective, { static: true })
+  public datepickerDirective: DatePickerDirective;
   public closeDatepicker() {
     this.datepickerDirective.modal.dismiss();
   }
@@ -72,7 +76,7 @@ export class PaymentPage implements OnInit {
     public iab: InAppBrowser
   ) {
     this.selectOptions = {
-      title: 'Select'
+      title: "Select",
     };
     this.email = this.navParams.get("email");
     this.telephone = this.navParams.get("telephone");
@@ -89,10 +93,12 @@ export class PaymentPage implements OnInit {
     this.name = this.navParams.get("name");
     this.dataArray = this.navParams.get("dataArray");
     this.cartTotal = this.navParams.get("cartTotal");
-    this.totalamount = (this.cartTotal + this.cartTotal * 2 / 100).toFixed(2);
+    this.totalamount = (this.cartTotal + (this.cartTotal * 2) / 100).toFixed(2);
     this.allTotal = this.navParams.get("allTotal");
-    this.onlineamount = (this.cartTotal).toFixed(2);
-    this.firsttermamount = Math.round((this.cartTotal + this.cartTotal * 2 / 100)*100);
+    this.onlineamount = this.cartTotal.toFixed(2);
+    this.firsttermamount = Math.round(
+      (this.cartTotal + (this.cartTotal * 2) / 100) * 100
+    );
     //  let loading = loadingCtrl.create({
     //   content: `<ion-spinner name="bubbles"></ion-spinner>`
     // });
@@ -100,7 +106,6 @@ export class PaymentPage implements OnInit {
     this.datetoday = new Date();
     this.localDate = new Date();
     console.log(this.localDate.toISOString());
-
   }
 
   codchange() {
@@ -115,35 +120,32 @@ export class PaymentPage implements OnInit {
       _this.paymentmodeltype = true;
       _this.paymenttype = false;
     }
-
   }
 
   onlinepay() {
-
     var options = {
-      description: 'Online Payment',
-      image: 'http://kmartprod1298.cloudapp.net/ivipni/image/logo.png',
-      currency: 'INR',
-      key: 'rzp_live_HXw5DZggBTmgfm',
+      description: "Online Payment",
+      image: "http://kmartprod1298.cloudapp.net/ivipni/image/logo.png",
+      currency: "INR",
+      key: "rzp_live_HXw5DZggBTmgfm",
       amount: this.firsttermamount,
-      name: 'Ivipani',
+      name: "Ivipani",
       prefill: {
         email: this.email,
         contact: this.telephone,
-        name: this.firstname
+        name: this.firstname,
       },
       theme: {
-        color: 'royal-blue'
+        color: "royal-blue",
       },
       modal: {
         ondismiss: function () {
-          alert('dismissed')
-        }
-      }
+          alert("dismissed");
+        },
+      },
     };
 
     var successCallback = (payment_id) => {
-
       //alert('payment_id: ' + payment_id);
       let payDetailsObj = {
         dataArray: this.dataArray,
@@ -167,16 +169,15 @@ export class PaymentPage implements OnInit {
         cartTotal: this.cartTotal,
         coupon: this.coupon,
         paymentMethod: this.paymentMethods,
-        totals: this.allTotal
+        totals: this.allTotal,
       };
 
       let myThankYouObj;
       this.users.placeOrder(payDetailsObj, (result, data) => {
-
         if (result == "1") {
           myThankYouObj = {
             pay: payDetailsObj,
-            data: data
+            data: data,
           };
 
           this.navCtrl.setRoot(ThankYouPage, myThankYouObj);
@@ -184,17 +185,14 @@ export class PaymentPage implements OnInit {
           this.navCtrl.setRoot(ThankYouPage, myThankYouObj);
         }
       });
-
     };
 
     var cancelCallback = function (error) {
-      alert(error.description + ' (Error ' + error.code + ')');
+      alert(error.description + " (Error " + error.code + ")");
     };
     this.platform.ready().then(() => {
-      RazorpayCheckout.open(options, successCallback, cancelCallback);
-
-    })
-
+   RazorpayCheckout.open(options, successCallback, cancelCallback);
+    });
   }
   change() {
     var _this = this;
@@ -213,7 +211,6 @@ export class PaymentPage implements OnInit {
       _this.bankdata = data.data;
       console.log("vidya" + JSON.stringify(_this.bankdata));
     });
-
   }
   placeOrderforCod() {
     var _this = this;
@@ -223,7 +220,7 @@ export class PaymentPage implements OnInit {
       date: _this.localDate.toISOString(),
       address_id: _this.address_id,
       paymentMethod: _this.paymentMethods,
-      totals: _this.allTotal
+      totals: _this.allTotal,
     };
     console.log("_this.datetoday" + _this.localDate.toISOString());
     let payDetailsObj = {
@@ -248,10 +245,10 @@ export class PaymentPage implements OnInit {
       cartTotal: _this.cartTotal,
       coupon: _this.coupon,
       paymentMethod: _this.paymentMethods,
-      totals: _this.allTotal
+      totals: _this.allTotal,
     };
     let loading = _this.loadingCtrl.create({
-      content: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`,
     });
 
     _this.logger.debug(
@@ -267,7 +264,7 @@ export class PaymentPage implements OnInit {
         if (result == "1") {
           myThankYouObj = {
             pay: payDetailsObj,
-            data: data
+            data: data,
           };
           _this.logger.debug(
             "checking the myThankYouObj" + JSON.stringify(myThankYouObj)
@@ -297,7 +294,7 @@ export class PaymentPage implements OnInit {
       date: _this.localDate.toISOString(),
       address_id: _this.address_id,
       paymentMethod: _this.paymentMethods,
-      totals: _this.allTotal
+      totals: _this.allTotal,
     };
 
     let payDetailsObj = {
@@ -322,12 +319,11 @@ export class PaymentPage implements OnInit {
       cartTotal: _this.cartTotal,
       coupon: _this.coupon,
       paymentMethod: _this.paymentMethods,
-      totals: _this.allTotal
+      totals: _this.allTotal,
     };
     let loading = _this.loadingCtrl.create({
-      content: `<ion-spinner name="bubbles"></ion-spinner>`
+      content: `<ion-spinner name="bubbles"></ion-spinner>`,
     });
-
 
     _this.logger.debug("paydetailsobj " + JSON.stringify(payDetailsObj1));
     _this.logger.debug(
@@ -343,7 +339,7 @@ export class PaymentPage implements OnInit {
           if (result == "1") {
             myThankYouObj = {
               pay: payDetailsObj,
-              data: data
+              data: data,
             };
             _this.logger.debug(
               "checking the myThankYouObj" + JSON.stringify(myThankYouObj)
@@ -360,19 +356,17 @@ export class PaymentPage implements OnInit {
       } else {
         loading.dismiss();
         _this.networkService.showSuccessAlert("Please insert transaction id");
-
       }
     }
   }
 
   optionsFn(event) {
-
-    const browser = this.iab.create(event.bank_url, '_self', { location: 'yes', closebuttoncaption: 'Close' });
+    const browser = this.iab.create(event.bank_url, "_self", {
+      location: "yes",
+      closebuttoncaption: "Close",
+    });
     browser.insertCSS({ code: "{color: royal-blue;}" });
-
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

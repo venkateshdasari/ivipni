@@ -1,7 +1,7 @@
 // error line no 17
 import { Injectable } from "@angular/core";
 import { AlertController } from "ionic-angular";
-import { Network } from "@ionic-native/network";
+import { Network } from "@ionic-native/network/ngx";
 import { Logger } from "../logger/logger";
 
 /*

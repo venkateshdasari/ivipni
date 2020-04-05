@@ -33,7 +33,11 @@
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.2.0",
     "com-sarriaroman-photoviewer": "^1.2.4",
+    "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
+    "cordova-android": "^8.1.0",
+    "cordova-ios": "^5.1.1",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-cocoapod-support": "1.6.2",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-sms-plugin": "^1.0.0",
@@ -58,6 +62,11 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^4.1.3",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -78,7 +87,19 @@
       "cordova-plugin-app-version": {},
       "cordova-plugin-device": {},
       "onesignal-cordova-plugin": {},
-      "cordova-sms-plugin": {}
-    }
+      "cordova-sms-plugin": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-ionic-keyboard": {},
+      "com.razorpay.cordova": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

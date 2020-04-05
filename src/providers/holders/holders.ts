@@ -1,7 +1,7 @@
 // one error at line no 25
 import { Injectable } from "@angular/core";
 import { AlertController, ToastController } from "ionic-angular";
-import { Network } from "@ionic-native/network";
+import { Network } from "@ionic-native/network/ngx";
 import { LoadingController } from "ionic-angular";
 import { Logger } from "../logger/logger";
 
@@ -28,11 +28,12 @@ export class Holders {
     console.log("Hello Holders Provider");
   }
 
- async showNetworkAlert() {
+  async showNetworkAlert() {
     var _this = this;
     let networkAlert = await _this.alertCtrl.create({
       title: "No Internet Connection",
-      message:"Cannot proceed with this operation. No network connection!. Please check your internet connection",
+      message:
+        "Cannot proceed with this operation. No network connection!. Please check your internet connection",
       buttons: [
         {
           text: "Ok",
@@ -42,9 +43,9 @@ export class Holders {
         }
       ]
     });
-   await networkAlert.present();
+    await networkAlert.present();
   }
- async showErrorAlert() {
+  async showErrorAlert() {
     var _this = this;
     let networkAlert = await _this.alertCtrl.create({
       title: "Error",

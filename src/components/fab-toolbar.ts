@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, Renderer } from '@angular/core';
-import { SMS } from '@ionic-native/sms';
+import { SMS } from '@ionic-native/sms/ngx';
 declare var window;
 
 /**

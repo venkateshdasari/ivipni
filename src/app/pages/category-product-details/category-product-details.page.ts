@@ -70,7 +70,7 @@ export class CategoryProductDetailsPage implements OnInit {
     public loadingCtrl: LoadingController,
     public logger: Logger,
     public holders: Holders,
-    private photoViewer: PhotoViewer,
+    // private photoViewer: PhotoViewer,
     public alertCtrl: AlertController
   ) {
     var _this = this;
@@ -552,7 +552,7 @@ export class CategoryProductDetailsPage implements OnInit {
     }
   }
   imageview(image, name) {
-    this.photoViewer.show((image), name, { share: false });
+    // this.photoViewer.show((image), name, { share: false });
 
   }
   optionsFn(ev, id) {

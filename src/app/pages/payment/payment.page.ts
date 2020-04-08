@@ -191,7 +191,7 @@ export class PaymentPage implements OnInit {
       alert(error.description + " (Error " + error.code + ")");
     };
     this.platform.ready().then(() => {
-   RazorpayCheckout.open(options, successCallback, cancelCallback);
+  //  RazorpayCheckout.open(options, successCallback, cancelCallback);
     });
   }
   change() {

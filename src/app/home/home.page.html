@@ -1,146 +1,76 @@
-<ion-header class="home">
-  <ion-nav color="primary" padding>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
+<ion-header [translucent]="true">
+  <ion-toolbar>  
+    <ion-buttons end>
+      <button ion-button (click)="quickOrderFn();">
+        <ion-icon name="search"></ion-icon>
       </button>
+      &nbsp;&nbsp;&nbsp;
 
-      <ion-buttons end>
-          <button ion-button (click)="quickOrderFn();">
-              <ion-icon name="search"></ion-icon>
-          </button> &nbsp;&nbsp;&nbsp;
+      <button ion-button (click)="wishListFn();">
+        <ion-icon name="heart"></ion-icon>
+        <div class="qntyColor">{{wishlistCount}}</div></button
+      >&nbsp;&nbsp;&nbsp;
 
-          <button ion-button (click)="wishListFn();">
-              <ion-icon name="heart"></ion-icon>
-              <div class="qntyColor">{{wishlistCount}}</div>
-
-          </button>&nbsp;&nbsp;&nbsp;
-
-          <button ion-button (click)="cartFn();">
-              <ion-icon name="cart"></ion-icon>
-              <div class="qntyColor">{{cartCount}}</div>
-          </button>
-      </ion-buttons>
-  </ion-nav>
+      <button ion-button (click)="cartFn();">
+        <ion-icon name="cart"></ion-icon>
+        <div class="qntyColor">{{cartCount}}</div>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-menu side [content]="mycontent" type="overlay">
-
+<!--side menu starts here-->
+<ion-menu side="start" menuId="first" contentId="main" type="overlay">
   <ion-header>
-      <div padding> &nbsp; &nbsp;
-          <ion-icon md="md-home" ios="ios-home" class="icon"></ion-icon>&nbsp; &nbsp; &nbsp; &nbsp;<b>{{loginData.data.customer.company_name}}</b>
-      </div>
+    <ion-toolbar color="primary">
+      <ion-header>
+        <div padding>
+          &nbsp; &nbsp;
+          <ion-icon md="md-home" ios="ios-home" class="icon"></ion-icon>&nbsp;
+          &nbsp; &nbsp; &nbsp;<b>Replace me by company name</b>
+        </div>
+      </ion-header>
+    </ion-toolbar>
   </ion-header>
-
-  <ion-content padding class="side-menu">
-      <ion-list class="iconSize">
-          <ion-item  (click)="account();"  menuClose>
-              <ion-icon name="contact" item-left></ion-icon> My account
-          </ion-item>
-          <ion-item  (click)="wishListFn();" menuClose>
-              <ion-icon name="heart" item-left></ion-icon> Wish List
-          </ion-item>
-          <ion-item (click)="cartFn();"  menuClose >
-              <ion-icon name="cart" item-left></ion-icon> My cart
-          </ion-item>
-          <!--<ion-item  (click)="amoutremain();"  menuClose>
-              <ion-icon name="card" item-left></ion-icon> Pay
-          </ion-item>-->
-          <ion-item (click)="sellerinfo();" menuClose>
-              <ion-icon name="eye" item-left></ion-icon> Seller Info
-          </ion-item>
-          <ion-item  (click)="call();" menuClose >
-              <ion-icon name="call" item-left></ion-icon> Contact Us
-          </ion-item>
-          <!--<ion-item (click)="chart();" menuClose>Chart</ion-item>-->
-          <ion-item  (click)="logout();" menuClose >
-               <ion-icon name="log-out" item-left></ion-icon> Logout
-          </ion-item>
-          <p class="version">
-              <strong>
-        <i>
-          version : {{appVersionnumber}}
-        </i>
-      </strong>
-          </p>
-      </ion-list>
+  <ion-content>
+    <ion-list class="iconSize">
+      <ion-item (click)="account();" menuClose>
+        <ion-icon name="contact" item-left></ion-icon> My account
+      </ion-item>
+      <ion-item (click)="wishListFn();" menuClose>
+        <ion-icon name="heart" item-left></ion-icon> Wish List
+      </ion-item>
+      <ion-item (click)="cartFn();" menuClose>
+        <ion-icon name="cart" item-left></ion-icon> My cart
+      </ion-item>
+      <!--<ion-item  (click)="amoutremain();"  menuClose>
+        <ion-icon name="card" item-left></ion-icon> Pay
+    </ion-item>-->
+      <ion-item (click)="sellerinfo();" menuClose>
+        <ion-icon name="eye" item-left></ion-icon> Seller Info
+      </ion-item>
+      <ion-item (click)="call();" menuClose>
+        <ion-icon name="call" item-left></ion-icon> Contact Us
+      </ion-item>
+      <!--<ion-item (click)="chart();" menuClose>Chart</ion-item>-->
+      <ion-item (click)="logout();" menuClose>
+        <ion-icon name="log-out" item-left></ion-icon> Logout
+      </ion-item>
+      <p class="version">
+        <strong>
+          <i>
+            version : {{appVersionnumber}}
+          </i>
+        </strong>
+      </p>
+    </ion-list>
   </ion-content>
 </ion-menu>
 
-<ion-nav #mycontent></ion-nav>
-<ion-content>
-  <ion-row class="topProducSlidSize">
-      <ion-slides *ngIf="topProducts && topProducts.length > 0" loop="true" speed="3000" autoplay = "5000">
-          <ion-slide *ngFor="let product of topProducts">
-              <img src={{product.image}}>
-          </ion-slide>
-      </ion-slides>
-  </ion-row>
-
-  <ion-card class="card-header" *ngIf="productCategory.length != 0">
-      <ion-card-header>
-          <span class="right_text"><b>PROMOTIONAL PRODUCTS:</b></span>
-          <ion-buttons end>
-              <button ion-button small color="primary" (click)="allProduct()">View All</button>
-          </ion-buttons>
-      </ion-card-header>
-  </ion-card>
-
-  <ion-row class="prodCatindex" >
-      <div *ngFor="let prodCat of productCategory;let idx = index" class="product1">
-          <ion-col *ngIf="idx <= 8">
-              <ion-card class="productcategoryioncol">
-
-                  <ion-item-sliding #item>
-                      <ion-item class="ionitemhome"> <b>{{prodCat.name}}</b>
-                      </ion-item>
-                  </ion-item-sliding>
-                  <ion-item>
-                      <p claas="valueelement">{{prodCat.model}}</p>
-                  </ion-item>
-                   <!--*ngFor="let prodCatoption of prodCat.option1"-->
-                  <ion-item class="ionclass">
-                     <p *ngIf="prodCat.option1[0].price != 0"><b>{{prodCat.option1[0].price}}</b>
-                      </p>
-                      <p class="discount_amt" *ngIf="prodCat.option1[0].salesprice > prodCat.option1[0].price && prodCat.option1[0].salesprice != 0">{{prodCat.option1[0].salesprice}}</p>
-                       
-                  </ion-item>
-                  <ion-row class="homeclassionrow">
-                      <ion-col class="quantityborder">
-                          <div *ngIf="productCategory[idx].quantity > 0" class="quantity">
-                              <ion-input class="quantityhome" type="number" value="" [(ngModel)]="productCategory[idx].required"></ion-input>
-                          </div>
-                      </ion-col>
-                      <ion-col class="cartforhome">
-                          <div *ngIf="productCategory[idx].quantity > 0">
-                              <ion-icon name="cart" (click)="addToCart(productCategory[idx])"></ion-icon>
-                          </div>
-                          <div *ngIf="productCategory[idx].quantity <= 0" class="icon_home_color">
-                              <div> Out of stock</div>
-                              <br>
-                          </div>
-                      </ion-col>
-                  </ion-row>
-              </ion-card>
-          </ion-col>
-      </div>
-  </ion-row>
-  <ion-card class="card-header">
-      <ion-card-header>
-          <span class="right_textcategories"><b>CATEGORIES:</b></span>
-      </ion-card-header>
-  </ion-card>
-  <ion-row class="brandNameSlideSize">
-      <div *ngFor="let catName of brandName">
-          <ion-col class="brandNameSlideSizeforcol">
-              <ion-card class="brandNamehome" (click)="infoBrandItem(catName);">
-                  <ion-item> <img class="imageCat" src={{catName.image}}>
-                  </ion-item>
-                  <ion-item>
-                      <p class="nameinhome">{{catName.sub_category_name}}</p>
-                  </ion-item>
-              </ion-card>
-          </ion-col>
-      </div>
-  </ion-row>
-
+<ion-content [fullscreen]="true" id="main">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
 </ion-content>

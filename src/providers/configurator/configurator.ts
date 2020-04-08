@@ -13,6 +13,8 @@ export class Configurator {
 
   public logLevel = 1; // 1 - Errors, 2- Errors/Info , 3 - Error/Info/Debug
 // public restServerBaseUrl = "http://paniniwin.cloudapp.net/ivipniQA/index.php?";
- public restServerBaseUrl = "http://kmartprod1298.cloudapp.net/ivipni/index.php?";
+ public restServerBaseUrl = "http://3.18.74.13/ivipni/index.php?";
   public restServerControllerUrl = "route=restapi/restapi";
 }
+
+

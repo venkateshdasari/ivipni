@@ -51,7 +51,7 @@ export class SearchProductsPage implements OnInit {
     public formBuilder: FormBuilder,
     public holders: Holders,
     public loadingCtrl: LoadingController,
-    private photoViewer: PhotoViewer,
+    // private photoViewer: PhotoViewer,
     public alertCtrl: AlertController
 
   ) {
@@ -202,7 +202,7 @@ export class SearchProductsPage implements OnInit {
   }
 
 imageview(image){
-this.photoViewer.show(image);
+// this.photoViewer.show(image);
 
 }
 
